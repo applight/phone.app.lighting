@@ -1,0 +1,24 @@
+{
+  "name": "phone.app.lighting",
+  "version": "0.1.0",
+  "description": "softphone",
+  "main": "quickstart.js",
+  "dependencies": {
+    "husky": "^4.2.5",
+    "keytar": "^5.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/applight/phone.app.lighting.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/applight/phone.app.lighting/issues"
+  },
+  "homepage": "https://github.com/applight/phone.app.lighting#readme"
+}
