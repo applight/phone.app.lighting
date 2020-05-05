@@ -8,8 +8,8 @@ $(function() {
   var device;
 
   log("Requesting Access Token...");
-  // Using a relative link to access the Voice Token function
-  $.getJSON("https://comm.app.lighting/voice-token")
+  // Using an absolute link to access the Voice Token function
+  $.postJSON("https://comm.app.lighting/voice-token")
     .then(function(data) {
       log("Got a token.");
       console.log("Token: " + data.token);
