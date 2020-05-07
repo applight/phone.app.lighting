@@ -8,6 +8,10 @@ const ClientCapability  = twilio.jwt.ClientCapability;
 const app               = express();
 
 
+app.get('/', (request, response) => {
+    response.sendFile('./static/index.html', { root: __dirname });
+});
+	
 app.get('/voice-token', (request, response) => {
     const identity = 'the_user_id';
     
