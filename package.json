@@ -1,0 +1,23 @@
+{
+  "name": "phone.app.lighting",
+  "version": "1.0.0",
+  "description": "phone.app.lighting",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/applight/phone.app.lighting.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/applight/phone.app.lighting/issues"
+  },
+  "homepage": "https://github.com/applight/phone.app.lighting#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "twilio": "^3.43.0"
+  }
+}
