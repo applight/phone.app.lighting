@@ -7,12 +7,8 @@ const MessagingResponse = twilio.twiml.MessagingResponse;
 const ClientCapability  = twilio.jwt.ClientCapability;
 const app               = express();
 
-
-app.get('/', (request, response) => {
-    response.sendFile('/landing.html', { root: __dirname });
-});
 	
-app.get('/voice-token', (request, response) => {
+app.get('/voice-token', (req, res) => {
     const identity = 'the_user_id';
     
     const capability = new ClientCapability({
@@ -28,9 +24,9 @@ app.get('/voice-token', (request, response) => {
     
     // Set headers in response
     res.setStatusCode(200);
-    res.appendHeader('Access-Control-Allow-Origin', '*');
+    res.appendHeader('Access-Control-Allow-Origin', 'https://phone.app.lighting');
     res.appendHeader('Access-Control-Allow-Methods', 'GET');
-    //res.appendHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.appendHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.appendHeader("Content-Type", "application/json");
 
     // Include token in a JSON response
