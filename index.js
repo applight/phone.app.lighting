@@ -9,7 +9,7 @@ const app               = express();
 
 
 app.get('/', (request, response) => {
-    response.sendFile('./static/index.html', { root: __dirname });
+    response.sendFile('/index.html', { root: __dirname });
 });
 	
 app.get('/voice-token', (request, response) => {
