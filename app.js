@@ -24,7 +24,7 @@ app.get('/voice-token', (req, res) => {
     
     // Set headers in response
     res.setStatusCode(200);
-    res.appendHeader('Access-Control-Allow-Origin', 'https://phone.app.lighting');
+    res.appendHeader('Access-Control-Allow-Origin', '*');
     res.appendHeader('Access-Control-Allow-Methods', 'GET');
     res.appendHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.appendHeader("Content-Type", "application/json");
