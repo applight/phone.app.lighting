@@ -6,7 +6,6 @@ const VoiceResponse     = twilio.twiml.VoiceResponse;
 const MessagingResponse = twilio.twiml.MessagingResponse;
 const ClientCapability  = twilio.jwt.ClientCapability;
 const app               = express();
-
 	
 app.get('/voice-token', (req, res) => {
     const identity = 'the_user_id';
