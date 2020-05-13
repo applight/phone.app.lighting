@@ -2,11 +2,18 @@ const express  = require('express');
 const twilio   = require('twilio');
 const client   = require('twilio')(process.env.TWILIO_ACCOUNT_SID,
 				   process.env.TWILIO_AUTH_TOKEN);
+const cors              = require( 'cors' );
 const VoiceResponse     = twilio.twiml.VoiceResponse;
 const MessagingResponse = twilio.twiml.MessagingResponse;
 const ClientCapability  = twilio.jwt.ClientCapability;
 const app               = express();
-	
+
+app.use( express.static('static') );
+
+const corsOptions = {
+    origin: 'https://phone.app.lighting'
+};
+
 app.get('/voice-token', (req, res) => {
     const identity = 'the_user_id';
     
@@ -24,9 +31,9 @@ app.get('/voice-token', (req, res) => {
     // Set headers in response
     res.setStatusCode(200);
     res.appendHeader('Access-Control-Allow-Origin', '*');
-    res.appendHeader('Access-Control-Allow-Methods', 'GET');
+    res.appendHeader('Access-Control-Allow-Methods', 'GET, POST');
     res.appendHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.appendHeader("Content-Type", "application/json");
+    res.appendHeader("Content-Type", "text/plain");
 
     // Include token in a JSON response
     res.send({
