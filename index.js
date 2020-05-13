@@ -14,6 +14,11 @@ const corsOptions = {
     origin: 'https://phone.app.lighting'
 };
 
+
+app.get( '/', cors(corsOptions), (req, res) => {
+    res.sendFile('/static/index.html');
+});
+
 app.get('/voice-token', (req, res) => {
     const identity = 'the_user_id';
     
