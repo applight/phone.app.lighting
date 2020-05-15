@@ -36,13 +36,14 @@ app.get('/voice-token', (req, res) => {
     }) );
     
     // Set headers in response
-    res.setStatusCode(200);
-    res.appendHeader('Access-Control-Allow-Origin', '*');
-    res.appendHeader('Access-Control-Allow-Methods', 'GET, POST, OPTION, HEAD');
-    res.appendHeader('Access-Control-Allow-Headers', 'Content-Type, Origin, X-Request-With, Accept');
-    res.appendHeader("Content-Type", "application/json");
+    // res.setStatusCode(200);
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Methods', 'GET, POST, OPTION, HEAD');
+    res.set('Access-Control-Allow-Headers', 'Content-Type, Origin, X-Request-With, Accept');
+    // res.set("Content-Type", "application/json");
 
     // Include token in a JSON response
+    //res.writeHead( 200, "text/json" );
     res.send({ 'identity': identity, 'token': capability.toJwt() } );
 });
 
