@@ -1,21 +1,23 @@
-const express  = require('express');
-const twilio   = require('twilio');
-const client   = require('twilio')(process.env.TWILIO_ACCOUNT_SID,
-				   process.env.TWILIO_AUTH_TOKEN);
+const express           = require('express');
+
+let accountSid        = process.env.TWILIO_ACCOUNT_SID;
+let authToken         = process.env.TWILIO_AUTH_TOKEN;
+
+const client            = require('twilio')(accountSid, authToken);
+const VoiceResponse     = require('twilio').twiml.VoiceResponse;
+const MessagingResponse = require('twilio').twiml.MessagingResponse;
+const ClientCapability  = require('twilio').jwt.ClientCapability;
 const cors              = require( 'cors' );
-const VoiceResponse     = twilio.twiml.VoiceResponse;
-const MessagingResponse = twilio.twiml.MessagingResponse;
-const ClientCapability  = twilio.jwt.ClientCapability;
 const app               = express();
 
 app.use( express.static('static') );
 
-const corsOptions = {
-    origin: 'https://phone.app.lighting'
-};
+//const corsOptions = {
+//    origin: 'https://phone.app.lighting'
+//};
 
 
-app.get( '/', cors(corsOptions), (req, res) => {
+app.get( '/', cors(), (req, res) => {
     res.sendFile('/index.html');
 });
 
@@ -23,8 +25,8 @@ app.get('/voice-token', (req, res) => {
     const identity = 'the_user_id';
     
     const capability = new ClientCapability({
-	'accountSid': process.env.TWILIO_ACCOUNT_SID,
-	'authToken': process.env.TWILIO_AUTH_TOKEN
+	'accountSid': accountSid,
+	'authToken': authToken
     });
 
     capability.addScope(new ClientCapability.IncomingClientScope(identity));   
@@ -35,12 +37,14 @@ app.get('/voice-token', (req, res) => {
     
     // Set headers in response
     res.setStatusCode(200);
-      add_header "Access-Control-Allow-Headers" "Authorization, Origin, X-Requested-With, Content-Type, Accept";
     res.appendHeader('Access-Control-Allow-Origin', '*');
     res.appendHeader('Access-Control-Allow-Methods', 'GET, POST, OPTION, HEAD');
     res.appendHeader('Access-Control-Allow-Headers', 'Content-Type, Origin, X-Request-With, Accept');
     res.appendHeader("Content-Type", "application/json");
 
     // Include token in a JSON response
-    res.json({ 'identity': identity, 'token': capability.toJwt() } );
+    res.send({ 'identity': identity, 'token': capability.toJwt() } );
 });
+
+
+//app.listen(8888, () => console.log('Example app listening at http://localhost:8888'));
