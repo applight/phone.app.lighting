@@ -16,7 +16,7 @@ const corsOptions = {
 
 
 app.get( '/', cors(corsOptions), (req, res) => {
-    res.sendFile('/static/index.html');
+    res.sendFile('/index.html');
 });
 
 app.get('/voice-token', (req, res) => {
