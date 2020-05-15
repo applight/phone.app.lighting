@@ -9,7 +9,7 @@ $(function() {
 
   log("Requesting Access Token...");
   // Using an absolute link to access the Voice Token function
-  $.getJSON("https://phone.app.lighting/voice-token")
+  $.getJSON("./voice-token")
     .then(function(data) {
       log("Got a token.");
       console.log("Token: " + data.token);
