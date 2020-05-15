@@ -35,13 +35,12 @@ app.get('/voice-token', (req, res) => {
     
     // Set headers in response
     res.setStatusCode(200);
+      add_header "Access-Control-Allow-Headers" "Authorization, Origin, X-Requested-With, Content-Type, Accept";
     res.appendHeader('Access-Control-Allow-Origin', '*');
-    res.appendHeader('Access-Control-Allow-Methods', 'GET, POST');
-    res.appendHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.appendHeader("Content-Type", "text/plain");
+    res.appendHeader('Access-Control-Allow-Methods', 'GET, POST, OPTION, HEAD');
+    res.appendHeader('Access-Control-Allow-Headers', 'Content-Type, Origin, X-Request-With, Accept');
+    res.appendHeader("Content-Type", "application/json");
 
     // Include token in a JSON response
-    res.end("{ 'identity': " + identity
-	    + ", 'token': "
-	    + capability.toJwt() + "};");
+    res.json({ 'identity': identity, 'token': capability.toJwt() } );
 });
