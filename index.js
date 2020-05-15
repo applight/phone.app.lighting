@@ -41,8 +41,7 @@ app.get('/voice-token', (req, res) => {
     res.appendHeader("Content-Type", "text/plain");
 
     // Include token in a JSON response
-    res.send({
-	'identity': identity,
-	'token': capability.toJwt()
-    });
+    res.end("{ 'identity': " + identity
+	    + ", 'token': "
+	    + capability.toJwt() + "};");
 });
